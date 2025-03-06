@@ -1,0 +1,13 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+  build:
+    commands:
+      - echo "Build started"
+      - echo "Zipping application files"
+      - zip -r app.zip *  
+      - aws s3 cp app.zip s3://ci-cd-artifacts-akshay/
+artifacts:
+  files: app.zip
